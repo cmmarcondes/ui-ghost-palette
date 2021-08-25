@@ -4,7 +4,7 @@ import P5Wrapper from 'react-p5-wrapper';
 import React from 'react';
 import './App.css';
 import './util/addons/p5.sound';
-import mymusic from "./teste.mp3";
+import mymusic from "./assets/teste.mp3";
 
 function App() {
   var song;
