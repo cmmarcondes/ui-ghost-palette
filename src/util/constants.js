@@ -1,0 +1,2 @@
+export const NUMBER_OF_COLORS_IN_PALETTE = 10;
+export const THIRTY_SECONDS = 30000;
