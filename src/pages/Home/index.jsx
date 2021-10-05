@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import '../../util/addons/p5.sound';
 import { Container } from './styles';
@@ -11,6 +11,7 @@ import { NUMBER_OF_COLORS_IN_PALETTE, THIRTY_SECONDS } from '../../util/constant
 const Home = () => {
     const { song, preparePalette } = useApplicationContext();
     const history = useHistory();
+    const [buttonTitle, setButtonTitle] = useState('gerar paleta');
 
   let fft;
   const frequencyArray = [];
@@ -24,12 +25,14 @@ const Home = () => {
       fft.analyze();
       if(song && song.isPlaying()) {
         frequencyArray.push(fft.getEnergy(0.3, 128));
+        console.log(fft.waveform())
       }
     }
   }
 
   function toggleSong() {
       song.play();
+      setButtonTitle('gerando paleta');
       setTimeout(() => {
         song.pause();
         preparePalette(frequencyArray.length/NUMBER_OF_COLORS_IN_PALETTE, frequencyArray);
@@ -41,7 +44,7 @@ const Home = () => {
     <Container>
       <P5Wrapper sketch={sketch} />
       <FileInput />
-      <Button toggleSong={toggleSong}>gerar paleta</Button>
+      <Button toggleSong={toggleSong}>{buttonTitle}</Button>
     </Container>
   
   );

@@ -7,7 +7,7 @@ function Button({ children, toggleSong }) {
   const { song } = useApplicationContext();
 
   return (
-    <Container onClick={toggleSong} disabled={!song} >
+    <Container onClick={toggleSong} disabled={!song || song.isPlaying()} >
         {children}
     </Container>
   );

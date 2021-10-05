@@ -19,6 +19,7 @@ export const Container = styled.button`
 
     transition: all 0.2s ease-in-out;
 
+
     &:hover {
         background-color: #F49097;
         box-shadow: 1px 1px 10px 3px #FF70A680;

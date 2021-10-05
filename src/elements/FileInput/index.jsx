@@ -8,9 +8,9 @@ function FileInput() {
 
   return (
       <Container>
-        <label htmlFor="upload-photo">{songName || "Procurar música"}</label>
+        <label htmlFor="uploaded-audio">{songName || "Procurar música"}</label>
         <input
-            id="upload-photo"
+            id="uploaded-audio"
             type="file" 
             files={song}
             onChange={handleChangeSong}

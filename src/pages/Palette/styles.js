@@ -5,6 +5,11 @@ export const Container = styled.div`
 
     width: 100%;
     height: 100vh;
+
+    @media only screen and (max-width: 652px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Colors = styled.div`
@@ -23,6 +28,13 @@ export const Colors = styled.div`
 
     cursor: pointer;
 
+/*     color: white;
+    font-weight: 500;
+    font-size: 1.425rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    letter-spacing: 0.8px; */
+
     &:hover {
         color: white;
         font-weight: 500;
@@ -30,5 +42,9 @@ export const Colors = styled.div`
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
         letter-spacing: 0.8px;
+    }
+
+    @media only screen and (max-width: 652px) {
+        width: 100%;
     }
 `;

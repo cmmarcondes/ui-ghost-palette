@@ -12,7 +12,8 @@ const ApplicationContextProvider = ({ children, ...props }) => {
         const { files } = event.target;
         const uploadedSong = new window.p5.prototype.loadSound(files[0]);
         setSong(uploadedSong);
-        setSongName(files[0].name)
+        setSongName(files[0].name);
+        
     }
 
     function preparePalette(arrayDivider, frequencyArray) {
