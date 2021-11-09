@@ -1,17 +1,19 @@
 import React from 'react';
 import { useApplicationContext } from '../../context/ApplicationContext';
-import { Colors, Container } from './styles';
+import {Body, Color, Palette} from '../../elements';
 
-const Palette = () => {
+const Palettes = () => {
     const { paletteArray } = useApplicationContext();
     console.log(paletteArray);
     return(
-        <Container>
-            {paletteArray.map((hex) => {
-                return <Colors hex={hex}>#{hex}</Colors>
-            })}
-        </Container>
+        <Body>
+            <Palette>
+                {paletteArray.map((hex) => {
+                    return <Color hex={hex}>#{hex}</Color>
+                })}
+            </Palette>
+        </Body>
     );
 }
 
-export default Palette;
+export default Palettes;
