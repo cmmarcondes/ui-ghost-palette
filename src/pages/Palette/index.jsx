@@ -4,12 +4,12 @@ import {Body, Color, Palette} from '../../elements';
 
 const Palettes = () => {
     const { paletteArray } = useApplicationContext();
-    console.log(paletteArray);
+
     return(
         <Body>
             <Palette>
                 {paletteArray.map((hex) => {
-                    return <Color hex={hex}>#{hex}</Color>
+                    return <Color hex={hex}>#</Color>
                 })}
             </Palette>
         </Body>

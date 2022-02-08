@@ -3,7 +3,7 @@ import styled  from "styled-components";
 export const ColorHex = styled.p`
   color: whitesmoke;
   letter-spacing: 2px;
-  font-size: 1.125rem;
+  font-size: 0.775rem;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   opacity: 0;
@@ -14,9 +14,11 @@ export const Frame = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
-  min-width: 75px;
-  background-color: ${({color}) => color};
+
+  min-height: 500px;
+  min-width: 125px;
+
+  background-color: ${({color}) => `#${color}`};
   border-radius: 40px 0px 40px 0px;
   box-shadow: #000000 5px 5px 10px;
 

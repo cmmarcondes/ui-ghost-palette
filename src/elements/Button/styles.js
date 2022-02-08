@@ -11,7 +11,7 @@ export const Container = styled.button`
     background-color: #fb2ba7;
     color: whitesmoke;
 
-    font-size: 1.625rem;
+    font-size: 1.225rem;
     font-weight: 600;
 
     cursor: pointer;
@@ -25,7 +25,6 @@ export const Container = styled.button`
 
 
     &:hover{
-        transform: scale(1.05) ;
         animation: blink .8s infinite ease-in-out;
     }
 

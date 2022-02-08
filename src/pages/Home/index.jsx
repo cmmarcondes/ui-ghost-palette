@@ -39,7 +39,7 @@ const Home = () => {
         song.pause();
         preparePalette(frequencyArray.length/NUMBER_OF_COLORS_IN_PALETTE, frequencyArray);
         setToColors(frequencyArray);
-        //history.push("/palette");
+        history.push("/palette");
       }, THIRTY_SECONDS);
   }
 
@@ -51,7 +51,7 @@ const Home = () => {
       {!loading ? 
           <>
             <HowUse>Clique no texto acima e selecione a música que você quer transformar em paleta!</HowUse>
-            {song && <Button toggleSong={toggleSong}>Gerar Paleta</Button> }
+            {song && <Button toggleSong={toggleSong}>GERAR PALETA</Button> }
           </>
         : 
           <Spinner/>

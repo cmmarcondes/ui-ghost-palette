@@ -25,10 +25,8 @@ export const NavLink = styled(Link)`
 
 
 
-export const ProfilePic = styled.div`
+export const ProfilePic = styled.img`
   height: 52px;
   width: 52px;
   border-radius: 50%;
-  background-color: blue;
-  opacity: 0.2;
 `

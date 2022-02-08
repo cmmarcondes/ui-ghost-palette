@@ -5,11 +5,11 @@ import {
   Frame
 } from "./style"
 
-const Color = ({children}) => {
+const Color = ({children, hex}) => {
   return (
-    <Frame color={children}>
+    <Frame color={hex}>
       <ColorHex>
-        {children}
+        {children+hex}
       </ColorHex>
     </Frame>
   )

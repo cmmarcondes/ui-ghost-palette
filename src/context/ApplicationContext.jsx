@@ -16,6 +16,12 @@ const ApplicationContextProvider = ({ children, ...props }) => {
         
     }
 
+    function clearCache() {
+      setSong('');
+      setSongName('');
+      setPaletteArray([]);
+    }
+
     function preparePalette(arrayDivider, frequencyArray) {
       const updatedPaletteArray = [...paletteArray];
       const uploadedHexStringArray = [];
@@ -40,7 +46,8 @@ const ApplicationContextProvider = ({ children, ...props }) => {
         songName,
         handleChangeSong,
         preparePalette,
-        paletteArray
+        paletteArray,
+        clearCache
       }}
       {...props}
     >
@@ -65,7 +72,8 @@ export function useApplicationContext() {
     songName,
     handleChangeSong,
     preparePalette,
-    paletteArray
+    paletteArray,
+    clearCache
   } = context;
 
   return {
@@ -73,6 +81,7 @@ export function useApplicationContext() {
     songName,
     handleChangeSong,
     preparePalette,
-    paletteArray
+    paletteArray,
+    clearCache
   };
 }
