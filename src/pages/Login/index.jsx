@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback } from "react";
 import ReactFacebookLogin from "react-facebook-login";
 import { useHistory } from "react-router";
 import { useFacebookContext } from "../../context/FacebookContext";
 import { LoginService } from "../../service/LoginService";
+import { APP_ID } from "../../util/constants";
 import { Container } from "./styles";
 
 const Login = () => {
@@ -14,9 +16,8 @@ const Login = () => {
     const loginService = new LoginService();
     await loginService
       .logar({
-        name: res.name,
         email: res.email,
-        userID: res.userID,
+        id: res.userID,
       })
       .then(() => {
         history.push("/home");
@@ -26,7 +27,7 @@ const Login = () => {
   return (
     <Container>
       <ReactFacebookLogin
-        appId="3006086256296516"
+        appId={APP_ID}
         fields="name, email, picture"
         callback={facebookResponse}
       />
