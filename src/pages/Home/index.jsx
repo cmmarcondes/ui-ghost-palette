@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import P5Wrapper from 'react-p5-wrapper';
-import '../../util/addons/p5.sound';
-import Button from '../../elements/Button';
-import FileInput from '../../elements/FileInput';
-import { useApplicationContext } from '../../context/ApplicationContext';
-import { useHistory } from 'react-router-dom';
-import { NUMBER_OF_COLORS_IN_PALETTE, THIRTY_SECONDS } from '../../util/constants';
-import {Body, Color, Palette, Spinner} from '../../elements';
-import { HowUse } from './styles';
+import React, { useState } from "react";
+import P5Wrapper from "react-p5-wrapper";
+import "../../util/addons/p5.sound";
+import Button from "../../elements/Button";
+import FileInput from "../../elements/FileInput";
+import { useApplicationContext } from "../../context/ApplicationContext";
+import { useHistory } from "react-router-dom";
+import {
+  NUMBER_OF_COLORS_IN_PALETTE,
+  THIRTY_SECONDS,
+} from "../../util/constants";
+import { Body, Color, NavBar, Palette, Spinner } from "../../elements";
+import { HowUse } from "./styles";
 
 const Home = () => {
-    const { song, preparePalette } = useApplicationContext();
-    const history = useHistory();
-    const [loading, setLoading] = useState(false);
+  const { song, preparePalette } = useApplicationContext();
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   let fft;
   const frequencyArray = [];
@@ -24,46 +27,52 @@ const Home = () => {
 
     p5.draw = () => {
       fft.analyze();
-      if(song && song.isPlaying()) {
+      if (song && song.isPlaying()) {
         frequencyArray.push(fft.getEnergy(0.3, 128));
-        console.log(fft.waveform())
       }
-    }
-  }
-  const [toColors, setToColors ] = useState([]);
+    };
+  };
+  const [toColors, setToColors] = useState([]);
 
   function toggleSong() {
-      song.play();
-      setLoading(true);
-      setTimeout(() => {
-        song.pause();
-        preparePalette(frequencyArray.length/NUMBER_OF_COLORS_IN_PALETTE, frequencyArray);
-        setToColors(frequencyArray);
-        history.push("/palette");
-      }, THIRTY_SECONDS);
+    song.play();
+    setLoading(true);
+    setTimeout(() => {
+      song.pause();
+      preparePalette(
+        frequencyArray.length / NUMBER_OF_COLORS_IN_PALETTE,
+        frequencyArray
+      );
+      setToColors(frequencyArray);
+      history.push("/palette");
+    }, THIRTY_SECONDS);
   }
 
-
   return (
-    <Body>
-      <FileInput />
-      
-      {!loading ? 
+    <NavBar>
+      <Body>
+        <FileInput />
+
+        {!loading ? (
           <>
-            <HowUse>Clique no texto acima e selecione a música que você quer transformar em paleta!</HowUse>
-            {song && <Button toggleSong={toggleSong}>GERAR PALETA</Button> }
+            <HowUse>
+              Clique no texto acima e selecione a música que você quer
+              transformar em paleta!
+            </HowUse>
+            {song && <Button toggleSong={toggleSong}>GERAR PALETA</Button>}
           </>
-        : 
-          <Spinner/>
-      }
-      <Palette>
-        {toColors.map((hex) => {
-            return <Color hex={hex}>#{hex}</Color>
-        })}
-      </Palette>
-      <P5Wrapper sketch={sketch} />
-    </Body>
+        ) : (
+          <Spinner />
+        )}
+        <Palette>
+          {toColors.map((hex) => {
+            return <Color hex={hex}>#{hex}</Color>;
+          })}
+        </Palette>
+        <P5Wrapper sketch={sketch} />
+      </Body>
+    </NavBar>
   );
-}
+};
 
 export default Home;

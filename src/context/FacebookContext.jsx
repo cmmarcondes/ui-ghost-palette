@@ -4,15 +4,22 @@ const FacebookContext = createContext({});
 
 const FacebookContextProvider = ({ children, ...props }) => {
     const [picture, setPicture] = useState('');
+    const [isFacebookButtonLoading, setIsFacebookButtonLoading] = useState(false);
     
     function handleSetPicture(url) {
         setPicture(url)
+    }
+
+    function toggleFacebookButton(state) {
+      setIsFacebookButtonLoading(state);
     }
 
   return (
     <FacebookContext.Provider
       value={{
         handleSetPicture,
+        toggleFacebookButton,
+        isFacebookButtonLoading,
         picture
       }}
       {...props}
@@ -35,11 +42,15 @@ export function useFacebookContext() {
 
   const {
     handleSetPicture,
+    toggleFacebookButton,
+    isFacebookButtonLoading,
     picture
   } = context;
 
   return {
     handleSetPicture,
+    toggleFacebookButton,
+    isFacebookButtonLoading,
     picture
   };
 }
