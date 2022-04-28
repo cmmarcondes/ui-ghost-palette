@@ -12,7 +12,14 @@ const ApplicationContextProvider = ({ children, ...props }) => {
         const { files } = event.target;
         const uploadedSong = new window.p5.prototype.loadSound(files[0]);
         setSong(uploadedSong);
-        setSongName(files[0].name)
+        setSongName(files[0].name);
+        
+    }
+
+    function clearCache() {
+      setSong('');
+      setSongName('');
+      setPaletteArray([]);
     }
 
     function preparePalette(arrayDivider, frequencyArray) {
@@ -39,7 +46,8 @@ const ApplicationContextProvider = ({ children, ...props }) => {
         songName,
         handleChangeSong,
         preparePalette,
-        paletteArray
+        paletteArray,
+        clearCache
       }}
       {...props}
     >
@@ -64,7 +72,8 @@ export function useApplicationContext() {
     songName,
     handleChangeSong,
     preparePalette,
-    paletteArray
+    paletteArray,
+    clearCache
   } = context;
 
   return {
@@ -72,6 +81,7 @@ export function useApplicationContext() {
     songName,
     handleChangeSong,
     preparePalette,
-    paletteArray
+    paletteArray,
+    clearCache
   };
 }

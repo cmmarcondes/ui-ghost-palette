@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.button`
-    padding: 20px 40px;
+    padding: 15px 30px;
     margin: 40px 0;
 
     border: none;
     border-radius: 8px;
-    box-shadow: 1px 1px 4px 3px #333333;
+    outline: none;
 
-    background-color: #FF70A6;
+    background-color: #fb2ba7;
+    color: whitesmoke;
 
-    color: white;
-    font-size: 1.625rem;
+    font-size: 1.225rem;
     font-weight: 600;
 
     cursor: pointer;
@@ -19,18 +19,29 @@ export const Container = styled.button`
 
     transition: all 0.2s ease-in-out;
 
-    &:hover {
-        background-color: #F49097;
-        box-shadow: 1px 1px 10px 3px #FF70A680;
-    }
-
     &:disabled {
         cursor: not-allowed;
-        opacity: 0.5;
+    }
 
-        &:hover {
-            background-color: #FF70A6;
-            box-shadow: none;
+
+    &:hover{
+        animation: blink .8s infinite ease-in-out;
+    }
+
+    @keyframes blink{
+        0%{
+            box-shadow: 1px 1px 5px 3px #000080;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);
+        }
+
+        33%{
+            box-shadow: 1px 1px 30px 3px #000080;
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+        }
+
+        100%{
+            box-shadow: 1px 1px 5px 3px #000080;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);
         }
     }
 `;
