@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from './styles';
-import '../../util/addons/p5.sound';
 import { useApplicationContext } from '../../context/ApplicationContext';
 
 function FileInput() {
