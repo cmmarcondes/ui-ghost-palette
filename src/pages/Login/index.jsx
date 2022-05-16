@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import ReactFacebookLogin from "react-facebook-login";
 import { useHistory } from "react-router";
 import { useFacebookContext } from "../../context/FacebookContext";
