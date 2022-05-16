@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import P5Wrapper from "react-p5-wrapper";
-import "../../util/addons/p5.sound";
 import Button from "../../elements/Button";
 import FileInput from "../../elements/FileInput";
 import { useApplicationContext } from "../../context/ApplicationContext";
