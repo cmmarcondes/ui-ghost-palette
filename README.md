@@ -1,4 +1,4 @@
-# UI-SOUND-ANALYZER
+# UI-GHOST-PALETTE
 
 ## Requisitos 🐱‍👤
 
