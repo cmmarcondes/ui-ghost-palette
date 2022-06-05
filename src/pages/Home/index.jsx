@@ -11,7 +11,7 @@ import {
 import { Body, Color, NavBar, Palette, Spinner } from "../../elements";
 import { HowUse } from "./styles";
 
-const Home = () => {
+const Home = ({ currentUser }) => {
   const { song, preparePalette } = useApplicationContext();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   return (
-    <NavBar>
+    <NavBar currentUser={currentUser}>
       <Body>
         <FileInput />
 
