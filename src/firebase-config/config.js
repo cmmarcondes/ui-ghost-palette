@@ -68,8 +68,8 @@ export const getAllPalettes = async () => {
   return palettesArray;
 };
 
-export const persistPalette = async (palette) => {
+export const persistPalette = async (palette, songName) => {
   const palettesRef = collection(firestore, "paletas");
   console.log(palette);
-  await addDoc(palettesRef, { hex: palette });
+  await addDoc(palettesRef, { hex: palette, song: songName });
 };

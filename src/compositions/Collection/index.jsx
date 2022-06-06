@@ -8,11 +8,16 @@ const Collection = ({ palettes }) => {
       {palettes &&
         palettes.map((palette) => (
           <div className="palette-window">
-            {palette.hex.map((hex) => (
-              <Color key={hex} hex={hex} desactiveHover>
-                #
-              </Color>
-            ))}
+            <span>
+              {palette.song}
+              <div>
+                {palette.hex.map((hex) => (
+                  <Color key={hex} hex={hex} desactiveHover>
+                    #
+                  </Color>
+                ))}
+              </div>
+            </span>
           </div>
         ))}
     </Container>

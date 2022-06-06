@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Collection from "../../compositions/Collection";
-import { NavBar } from "../../elements";
 import { getAllPalettes } from "../../firebase-config/config";
 
 const Galeria = () => {
@@ -15,11 +14,7 @@ const Galeria = () => {
     fetchPalettes();
   }, [fetchPalettes]);
 
-  return (
-    <NavBar>
-      <Collection palettes={palettes} />
-    </NavBar>
-  );
+  return <Collection palettes={palettes} />;
 };
 
 export default Galeria;
