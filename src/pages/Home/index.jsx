@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import P5Wrapper from "react-p5-wrapper";
 import Button from "../../elements/Button";
 import FileInput from "../../elements/FileInput";
@@ -8,13 +8,14 @@ import {
   NUMBER_OF_COLORS_IN_PALETTE,
   THIRTY_SECONDS,
 } from "../../util/constants";
-import { Body, Color, NavBar, Palette, Spinner } from "../../elements";
+import { Body, Color, Palette, ProgressBar } from "../../elements";
 import { HowUse } from "./styles";
 
 const Home = () => {
   const { song, preparePalette } = useApplicationContext();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [preparingPalette, setPreparingPalette] = useState(false);
 
   let fft;
   const frequencyArray = [];
@@ -35,7 +36,7 @@ const Home = () => {
 
   function toggleSong() {
     song.play();
-    setLoading(true);
+    setPreparingPalette(true);
     setTimeout(() => {
       song.pause();
       preparePalette(
@@ -47,30 +48,38 @@ const Home = () => {
     }, THIRTY_SECONDS);
   }
 
-  return (
-    <NavBar>
-      <Body>
-        <FileInput />
+  useEffect(() => {
+    if (song) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 4000);
+    }
+  }, [song]);
 
-        {!loading ? (
-          <>
-            <HowUse>
-              Clique no texto acima e selecione a música que você quer
-              transformar em paleta!
-            </HowUse>
-            {song && <Button toggleSong={toggleSong}>GERAR PALETA</Button>}
-          </>
-        ) : (
-          <Spinner />
-        )}
-        <Palette>
-          {toColors.map((hex) => {
-            return <Color hex={hex}>#{hex}</Color>;
-          })}
-        </Palette>
-        <P5Wrapper sketch={sketch} />
-      </Body>
-    </NavBar>
+  return (
+    <Body>
+      <FileInput />
+      <HowUse>
+        Clique no texto acima e selecione a música que você quer transformar em
+        paleta!
+      </HowUse>
+      <br />
+      {song && !preparingPalette && (
+        <Button toggleSong={toggleSong} disabled={loading}>
+          GERAR PALETA
+        </Button>
+      )}
+
+      {preparingPalette && <ProgressBar />}
+
+      <Palette>
+        {toColors.map((hex) => {
+          return <Color hex={hex}>#{hex}</Color>;
+        })}
+      </Palette>
+      <P5Wrapper sketch={sketch} />
+    </Body>
   );
 };
 

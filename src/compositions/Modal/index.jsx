@@ -6,7 +6,7 @@ const Modal = ({ title, message, isModalOpen, toggleState }) => {
     isModalOpen && (
       <Container isModalOpen={isModalOpen}>
         <div className="modal-holder">
-          <i class="fa-solid fa-circle-exclamation"></i>
+          <i className="fa-solid fa-circle-exclamation"></i>
           <h2>{title}</h2>
           <h3>{message}</h3>
           <button type="button" onClick={toggleState}>ok</button>
