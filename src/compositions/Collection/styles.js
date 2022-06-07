@@ -5,7 +5,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   padding: 30px;
   height: 100vh;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
 
   .palette-window {
     position: relative;

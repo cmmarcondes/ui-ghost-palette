@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import P5Wrapper from "react-p5-wrapper";
+import React, { useCallback, useEffect, useState } from "react";
+import "../../util/addons/p5.sound";
 import Button from "../../elements/Button";
 import FileInput from "../../elements/FileInput";
+import p5 from "p5";
 import { useApplicationContext } from "../../context/ApplicationContext";
 import { useHistory } from "react-router-dom";
 import {
@@ -15,27 +16,35 @@ const Home = () => {
   const { song, preparePalette } = useApplicationContext();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
+  const [p5Prototypes, setP5Prototypes] = useState();
   const [preparingPalette, setPreparingPalette] = useState(false);
 
-  let fft;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const frequencyArray = [];
 
-  const sketch = (p5) => {
-    p5.setup = () => {
-      fft = new window.p5.FFT(0.9, 128);
-    };
+  const sketch = useCallback(
+    (p) => {
+      let fft;
+      p.setup = () => {
+        fft = new p5.FFT(0.9, 128);
+        setP5Prototypes(p.__proto__);
+      };
 
-    p5.draw = () => {
-      fft.analyze();
-      if (song && song.isPlaying()) {
-        frequencyArray.push(fft.getEnergy(0.3, 128));
-      }
-    };
-  };
+      p.draw = () => {
+        fft.analyze();
+        if (song && song.isPlaying()) {
+          frequencyArray.push(fft.getEnergy(0.3, 128));
+        }
+      };
+    },
+    [frequencyArray, song]
+  );
+
   const [toColors, setToColors] = useState([]);
 
   function toggleSong() {
     song.play();
+    p5Prototypes.getAudioContext().resume();
     setPreparingPalette(true);
     setTimeout(() => {
       song.pause();
@@ -57,9 +66,11 @@ const Home = () => {
     }
   }, [song]);
 
+  useEffect(() => new p5(sketch), [sketch]);
+
   return (
     <Body>
-      <FileInput />
+      <FileInput loadSound={p5Prototypes} />
       <HowUse>
         Clique no texto acima e selecione a música que você quer transformar em
         paleta!
@@ -75,10 +86,13 @@ const Home = () => {
 
       <Palette>
         {toColors.map((hex) => {
-          return <Color hex={hex}>#{hex}</Color>;
+          return (
+            <Color key={hex} hex={hex}>
+              #{hex}
+            </Color>
+          );
         })}
       </Palette>
-      <P5Wrapper sketch={sketch} />
     </Body>
   );
 };

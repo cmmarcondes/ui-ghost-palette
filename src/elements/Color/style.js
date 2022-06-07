@@ -8,7 +8,7 @@ export const ColorHex = styled.p`
   transition: all 0.25s ease-in-out;
   opacity: 0;
   text-transform: uppercase;
-  width: ${({ desactiveHover }) => desactiveHover && "30px"};
+  width: ${({ desactiveHover }) => (desactiveHover ? "30px" : 'auto')};
 `;
 
 export const Frame = styled.div`

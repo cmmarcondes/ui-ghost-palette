@@ -1,6 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
 /*! p5.sound.js v0.3.11 2019-03-14 */
 /**
  *  p5.sound extends p5 with <a href="http://caniuse.com/audio-api"
@@ -366,7 +363,7 @@ var StartAudioContext;
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Tone;
 Tone_core_Tone = function () {
-  
+  'use strict';
   var Tone = function (inputs, outputs) {
     if (this.isUndef(inputs) || inputs === 1) {
       this.input = this.context.createGain();
@@ -743,7 +740,7 @@ Tone_core_Tone = function () {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Emitter;
 Tone_core_Emitter = function (Tone) {
-  
+  'use strict';
   Tone.Emitter = function () {
     this._events = {};
   };
@@ -4058,7 +4055,7 @@ fft = function () {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_SignalBase;
 Tone_signal_SignalBase = function (Tone) {
-  
+  'use strict';
   Tone.SignalBase = function () {
   };
   Tone.extend(Tone.SignalBase);
@@ -4079,7 +4076,7 @@ Tone_signal_SignalBase = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_WaveShaper;
 Tone_signal_WaveShaper = function (Tone) {
-  
+  'use strict';
   Tone.WaveShaper = function (mapping, bufferLen) {
     this._shaper = this.input = this.output = this.context.createWaveShaper();
     this._curve = null;
@@ -4884,7 +4881,7 @@ Tone_type_Type = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Param;
 Tone_core_Param = function (Tone) {
-  
+  'use strict';
   Tone.Param = function () {
     var options = this.optionsObject(arguments, [
       'param',
@@ -5052,7 +5049,7 @@ Tone_core_Param = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Gain;
 Tone_core_Gain = function (Tone) {
-  
+  'use strict';
   if (window.GainNode && !AudioContext.prototype.createGain) {
     AudioContext.prototype.createGain = AudioContext.prototype.createGainNode;
   }
@@ -5100,7 +5097,7 @@ Tone_core_Gain = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Signal;
 Tone_signal_Signal = function (Tone) {
-  
+  'use strict';
   Tone.Signal = function () {
     var options = this.optionsObject(arguments, [
       'value',
@@ -5131,7 +5128,7 @@ Tone_signal_Signal = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Add;
 Tone_signal_Add = function (Tone) {
-  
+  'use strict';
   Tone.Add = function (value) {
     this.createInsOuts(2, 0);
     this._sum = this.input[0] = this.input[1] = this.output = new Tone.Gain();
@@ -5152,7 +5149,7 @@ Tone_signal_Add = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Multiply;
 Tone_signal_Multiply = function (Tone) {
-  
+  'use strict';
   Tone.Multiply = function (value) {
     this.createInsOuts(2, 0);
     this._mult = this.input[0] = this.output = new Tone.Gain();
@@ -5172,7 +5169,7 @@ Tone_signal_Multiply = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Scale;
 Tone_signal_Scale = function (Tone) {
-  
+  'use strict';
   Tone.Scale = function (outputMin, outputMax) {
     this._outputMin = this.defaultArg(outputMin, 0);
     this._outputMax = this.defaultArg(outputMax, 1);
@@ -5882,7 +5879,7 @@ oscillator = function () {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Timeline;
 Tone_core_Timeline = function (Tone) {
-  
+  'use strict';
   Tone.Timeline = function () {
     var options = this.optionsObject(arguments, ['memory'], Tone.Timeline.defaults);
     this._timeline = [];
@@ -6085,7 +6082,7 @@ Tone_core_Timeline = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_TimelineSignal;
 Tone_signal_TimelineSignal = function (Tone) {
-  
+  'use strict';
   Tone.TimelineSignal = function () {
     var options = this.optionsObject(arguments, [
       'value',
@@ -7753,7 +7750,7 @@ audioin = function () {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Negate;
 Tone_signal_Negate = function (Tone) {
-  
+  'use strict';
   Tone.Negate = function () {
     this._multiply = this.input = this.output = new Tone.Multiply(-1);
   };
@@ -7769,7 +7766,7 @@ Tone_signal_Negate = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Subtract;
 Tone_signal_Subtract = function (Tone) {
-  
+  'use strict';
   Tone.Subtract = function (value) {
     this.createInsOuts(2, 0);
     this._sum = this.input[0] = this.output = new Tone.Gain();
@@ -7793,7 +7790,7 @@ Tone_signal_Subtract = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_GreaterThanZero;
 Tone_signal_GreaterThanZero = function (Tone) {
-  
+  'use strict';
   Tone.GreaterThanZero = function () {
     this._thresh = this.output = new Tone.WaveShaper(function (val) {
       if (val <= 0) {
@@ -7819,7 +7816,7 @@ Tone_signal_GreaterThanZero = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_GreaterThan;
 Tone_signal_GreaterThan = function (Tone) {
-  
+  'use strict';
   Tone.GreaterThan = function (value) {
     this.createInsOuts(2, 0);
     this._param = this.input[0] = new Tone.Subtract(value);
@@ -7841,7 +7838,7 @@ Tone_signal_GreaterThan = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Abs;
 Tone_signal_Abs = function (Tone) {
-  
+  'use strict';
   Tone.Abs = function () {
     this._abs = this.input = this.output = new Tone.WaveShaper(function (val) {
       if (val === 0) {
@@ -7863,7 +7860,7 @@ Tone_signal_Abs = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Modulo;
 Tone_signal_Modulo = function (Tone) {
-  
+  'use strict';
   Tone.Modulo = function (modulus) {
     this.createInsOuts(1, 0);
     this._shaper = new Tone.WaveShaper(Math.pow(2, 16));
@@ -7909,7 +7906,7 @@ Tone_signal_Modulo = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Pow;
 Tone_signal_Pow = function (Tone) {
-  
+  'use strict';
   Tone.Pow = function (exp) {
     this._exp = this.defaultArg(exp, 1);
     this._expScaler = this.input = this.output = new Tone.WaveShaper(this._expFunc(this._exp), 8192);
@@ -7940,7 +7937,7 @@ Tone_signal_Pow = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_AudioToGain;
 Tone_signal_AudioToGain = function (Tone) {
-  
+  'use strict';
   Tone.AudioToGain = function () {
     this._norm = this.input = this.output = new Tone.WaveShaper(function (x) {
       return (x + 1) / 2;
@@ -7958,7 +7955,7 @@ Tone_signal_AudioToGain = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_Expr;
 Tone_signal_Expr = function (Tone) {
-  
+  'use strict';
   Tone.Expr = function () {
     var expr = this._replacements(Array.prototype.slice.call(arguments));
     var inputCount = this._parseInputs(expr);
@@ -8295,7 +8292,7 @@ Tone_signal_Expr = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_signal_EqualPowerGain;
 Tone_signal_EqualPowerGain = function (Tone) {
-  
+  'use strict';
   Tone.EqualPowerGain = function () {
     this._eqPower = this.input = this.output = new Tone.WaveShaper(function (val) {
       if (Math.abs(val) < 0.001) {
@@ -8317,7 +8314,7 @@ Tone_signal_EqualPowerGain = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_component_CrossFade;
 Tone_component_CrossFade = function (Tone) {
-  
+  'use strict';
   Tone.CrossFade = function (initialFade) {
     this.createInsOuts(2, 1);
     this.a = this.input[0] = new Tone.Gain();
@@ -10243,7 +10240,7 @@ reverb = function () {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_TimelineState;
 Tone_core_TimelineState = function (Tone) {
-  
+  'use strict';
   Tone.TimelineState = function (initial) {
     Tone.Timeline.call(this);
     this._initial = initial;
@@ -10268,7 +10265,7 @@ Tone_core_TimelineState = function (Tone) {
 /** Tone.js module by Yotam Mann, MIT License 2016  http://opensource.org/licenses/MIT **/
 var Tone_core_Clock;
 Tone_core_Clock = function (Tone) {
-  
+  'use strict';
   Tone.Clock = function () {
     Tone.Emitter.call(this);
     var options = this.optionsObject(arguments, [
@@ -11201,7 +11198,7 @@ soundloop = function () {
 }(master, Tone_core_Clock);
 var compressor;
 compressor = function () {
-  
+  'use strict';
   var p5sound = master;
   var Effect = effect;
   var CustomError = errorHandler;
