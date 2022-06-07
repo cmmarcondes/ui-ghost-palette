@@ -12,6 +12,6 @@ export const Container = styled.div`
     overflow: hidden;
 `;
 
-export const HowUse = styled.p`
+export const HowToUse = styled.p`
     color: white;
 `

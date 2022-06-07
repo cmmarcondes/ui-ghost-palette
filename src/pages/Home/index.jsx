@@ -10,10 +10,10 @@ import {
   THIRTY_SECONDS,
 } from "../../util/constants";
 import { Body, Color, Palette, ProgressBar } from "../../elements";
-import { HowUse } from "./styles";
+import { HowToUse } from "./styles";
 
 const Home = () => {
-  const { song, preparePalette } = useApplicationContext();
+  const { song, songName, preparePalette } = useApplicationContext();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [p5Prototypes, setP5Prototypes] = useState();
@@ -70,11 +70,20 @@ const Home = () => {
 
   return (
     <Body>
-      <FileInput loadSound={p5Prototypes} />
-      <HowUse>
-        Clique no texto acima e selecione a música que você quer transformar em
-        paleta!
-      </HowUse>
+      {!preparingPalette && (
+        <>
+          <FileInput loadSound={p5Prototypes} />
+          <HowToUse>
+            Clique no texto acima e selecione a música que você quer transformar
+            em paleta!
+          </HowToUse>
+        </>
+      )}
+      {preparingPalette && (
+        <HowToUse>
+          Estamos analisando a música {songName}, por favor aguarde
+        </HowToUse>
+      )}
       <br />
       {song && !preparingPalette && (
         <Button toggleSong={toggleSong} disabled={loading}>

@@ -20,7 +20,7 @@ const AuthenticationContext = createContext({});
 
 const AuthenticationContextProvider = ({ children, ...props }) => {
   const [picture, setPicture] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const socialMedia = useMemo(
     () => ({
       google: new GoogleAuthProvider(),
@@ -39,6 +39,7 @@ const AuthenticationContextProvider = ({ children, ...props }) => {
   const signOut = useCallback(async () => {
     try {
       await auth.signOut();
+      setCurrentUser(null);
     } catch (error) {}
   }, []);
 
@@ -55,7 +56,6 @@ const AuthenticationContextProvider = ({ children, ...props }) => {
           });
         });
       }
-      setCurrentUser(null);
     });
   }, []);
 

@@ -5,7 +5,7 @@ const useAuth = ({ history }) => {
   const { currentUser } = useAuthenticationContext();
 
   useEffect(() => {
-    if (!currentUser) {
+    if (currentUser === null) {
       history.push("/login");
     }
   }, [currentUser, history]);

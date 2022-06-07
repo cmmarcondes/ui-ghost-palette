@@ -13,4 +13,9 @@ export const Container = styled.div`
     width: 100%;
     height: calc(100vh - var(--navbar-height));
     overflow: hidden;
+
+    h2 {
+        color: white;
+        font-size: 2rem;
+    }
 `

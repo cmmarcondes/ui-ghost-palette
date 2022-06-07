@@ -15,6 +15,7 @@ const Palettes = () => {
 
   return (
     <Body>
+      <h2>Pronto! Aqui está a paleta de cores da música {songName}!</h2>
       <Palette>
         {paletteArray.map((hex) => {
           return (
