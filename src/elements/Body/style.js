@@ -14,6 +14,8 @@ export const Container = styled.div`
     height: calc(100vh - var(--navbar-height));
     overflow: hidden;
 
+    padding: 0 32px;
+
     h2 {
         color: white;
         font-size: 2rem;

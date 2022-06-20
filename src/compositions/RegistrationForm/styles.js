@@ -12,7 +12,7 @@ export const Container = styled.form`
     position: absolute;
     bottom: -23px;
   }
-  
+
   .error-handler {
     color: red;
   }

@@ -14,4 +14,5 @@ export const Container = styled.div`
 
 export const HowToUse = styled.p`
     color: white;
+    text-align: center;
 `

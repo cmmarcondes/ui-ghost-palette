@@ -16,6 +16,12 @@ html {
   background-size: cover;
 }
 
+@media (max-width: 640px) {
+  html {
+    background-position: bottom;
+  }
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;

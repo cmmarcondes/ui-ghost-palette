@@ -17,7 +17,7 @@ const NavBar = ({ children, ...props }) => {
           <NavLink to="/sobre">Sobre</NavLink>
         </div>
         <div>
-          <span onClick={signOut}>sair</span>
+          <span onClick={signOut}>Sair</span>
           <ProfilePic src={currentUser.picture} />
         </div>
       </Nav>

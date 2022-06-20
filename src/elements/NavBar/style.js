@@ -22,6 +22,12 @@ export const Nav = styled.nav`
       padding: 0 16px;
       color: white;
       cursor: pointer;
+
+      @media (max-width: 640px) {
+        font-size: 1rem;
+        padding: 0;
+        font-weight: bold;
+      }
     }
   }
 `;
@@ -35,10 +41,18 @@ export const NavLink = styled(Link)`
   &.active {
     color: #ff69b4;
   }
+
+  @media (max-width: 640px) {
+    font-size: 1rem;
+  }
 `;
 
 export const ProfilePic = styled.img`
   height: 52px;
   width: 52px;
   border-radius: 50%;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;

@@ -5,6 +5,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
+  backdrop-filter: blur(5px);
+
   width: 100%;
   height: 100vh;
   
